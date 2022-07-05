@@ -38,6 +38,7 @@ class Counter extends React.Component {
     handleDelete = (id) => {
         let Data=[...this.state.Data];
         let Counter= Data.filter((i) => i.id !== id);
+        console.log(Counter);
 
         this.setState({Data:Counter})
     }
@@ -47,9 +48,10 @@ class Counter extends React.Component {
         // console.log(this.state.chData);
         return (
             <div className='ps-5 w-50 m-auto'>
-                <h1 className='text-info'>Counter</h1>
-                <input type='text' onChange={this.handleChange} value={this.state.chData} className='ps-3' />
-                <button className='w-10 ms-5' onClick={this.add} style={{ width: '120px' }}>Submit</button>
+                <h1 className='text-info d-inline'>Counter</h1>
+                <h1 className='d-inline ps-3 text-warning'>{this.state.Data.length}</h1><br/>
+                <input type='text' onChange={this.handleChange} value={this.state.chData} className='ps-3 mt-3' />
+                <button className='w-10 ms-5 border-1 border-primary rounded-pill' onClick={this.add} style={{ width: '120px' }}>Submit</button>
                 {this.state.Data.map((d) => {
                     return (
                         <Data key={d.id}  id={d.id} title={d.title} handleDelete={this.handleDelete} />
